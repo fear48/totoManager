@@ -5,7 +5,29 @@
 	padding-left: 10px;
 }
 
+.item-input{
+	padding: 6px 16px 6px 16px !important;
+}
+.input-label{
+	width: 30% !important;
+}
+
 button.login-btn{
 	width: 50%;
 	margin: 0 auto;
+}
+
+.popup-body{
+	text-align: center;
+}
+
+.col{
+	border:1px solid #ccc;
+	padding: 15px;
+}
+
+.logo{
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }

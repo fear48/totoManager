@@ -26,7 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $httpProvider.defaults.headers.post = {};
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -39,32 +39,45 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'AuthCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.main', {
+    url: '/main',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/main.html',
+        controller: 'mainCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
+  .state('app.fills', {
+    url: '/fills',
+    cache: true,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/fills.html',
+        controller: 'fillsCtrl'
       }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
+    }
+  })
+  .state('app.stats', {
+    url: '/stats',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search.html',
+        controller: 'fillsCtrl'
       }
-    })
+    }
+  })
+  .state('app.addfin', {
+    url: '/addfin',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/playlist.html',
+        controller: 'fillsCtrl'
+      }
+    }
+  })
+
 
   .state('app.single', {
     url: '/playlists/:playlistId',
