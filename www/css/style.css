@@ -1,0 +1,11 @@
+/* Empty. Add your own CSS if you like */
+.item-input input{
+	border:1px solid #ccc;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+
+button.login-btn{
+	width: 50%;
+	margin: 0 auto;
+}
