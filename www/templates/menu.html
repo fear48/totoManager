@@ -3,7 +3,6 @@
     <ion-nav-bar class="bar-positive">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -12,26 +11,29 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" width="220">
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Тото</h1>
+      <h1 class="title">Меню</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/main">
-          Главная
+        <ion-item menu-close href="#/app/finance" class="item-icon-left">
+          <i class="icon ion-clipboard"></i>Финансы
         </ion-item>
-        <ion-item menu-close href="#/app/fills">
-          Филиалы
+        <ion-item menu-close href="#/app/stats" class="item-icon-left">
+          <i class="icon ion-stats-bars"></i>Статистика
         </ion-item>
-        <ion-item menu-close href="#/app/stats">
-          Статистика
+        <ion-item menu-close href="#/app/costs" class="item-icon-left">
+          <i class="icon ion-calculator"></i>Расходы
         </ion-item>
-        <ion-item menu-close href="#/app/addfin">
-          Добавить расчет
+        <ion-item menu-close href="#/app/report" class="item-icon-left">
+          <i class="icon ion-ios-calendar-outline"></i>Отчет по дням
         </ion-item>
-        <ion-item menu-close ng-click="logout()">
-          Выйти
+        <ion-item menu-close href="#/app/addcost" class="item-icon-left">
+          <i class="icon ion-android-add"></i>Новый расход
+        </ion-item>
+        <ion-item menu-close ng-click="logout()" class="item-icon-left">
+          <i class="icon ion-log-out"></i>Выход
         </ion-item>
       </ion-list>
     </ion-content>

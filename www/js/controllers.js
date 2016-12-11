@@ -8,7 +8,9 @@ angular.module('starter.controllers', [])
         utils.showAlert("Ошибка авторизации", data.errtext);
       }else{
         $state.go('app.main');
-        console.log(data);
+        if($scope.loginData.isRemembered){
+          lstorage.set("isRemembered", true);
+        }
         lstorage.set("uid", data.uid);
         lstorage.set("flname", data.name1 + ' ' + data.name2);
       }
@@ -24,15 +26,60 @@ angular.module('starter.controllers', [])
   $scope.logout = function(){
     lstorage.remove("uid");
     lstorage.remove("flname");
+    lstorage.remove("isRemembered");
     $state.go('auth');
   };
 })
-.controller('fillsCtrl', function($scope, lstorage, totoData, utils) {
-  utils.showLoad();
+.controller('financeCtrl', function($scope, lstorage, totoData, utils) {
   totoData.getFils(lstorage.get("uid")).then(function(data){
     $scope.fils = data.fils;
-    utils.hideLoad();
+    console.log(data.fils);
   }, function(err){
     alert(err);
   });
+
+  $scope.refresh = function(){
+    console.log($scope.filId);
+    if(typeof $scope.filId !== 'undefined'){
+      utils.showLoad();
+      totoData.getFinInfo(lstorage.get("uid"), $scope.filId).then(function(data){
+        $scope.finInfo = data;
+        for(var i = 0; i < data.pplist.length; i++){
+          $scope.total += data.pplist[i].ost;
+        }
+        utils.hideLoad();
+      }, function(err){
+        console.log(err);
+      });
+    }
+  };
+
+  $scope.loadInfo = function(filId){
+    $scope.filId = filId;
+    $scope.total = 0;
+    if(typeof filId !== 'undefined'){
+      utils.showLoad();
+      totoData.getFinInfo(lstorage.get("uid"), filId).then(function(data){
+        $scope.finInfo = data;
+        for(var i = 0; i < data.pplist.length; i++){
+          $scope.total += data.pplist[i].ost;
+        }
+        utils.hideLoad();
+      }, function(err){
+        console.log(err);
+      });
+    }
+  };
 })
+.controller('statsCtrl', function($scope, lstorage, totoData, utils) {
+  
+})
+.controller('costsCtrl', function($scope, lstorage, totoData, utils) {
+  
+})
+.controller('reportCtrl', function($scope, lstorage, totoData, utils) {
+  
+})
+.controller('addcostCtrl', function($scope, lstorage, totoData, utils) {
+  
+});

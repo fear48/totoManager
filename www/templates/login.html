@@ -1,22 +1,22 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Авторизация</h1>
-  </ion-header-bar>
+<ion-view view-title="Авторизация" cache-view="false">
+  <ion-nav-bar class="bar-positive">
+  </ion-nav-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
+    <form ng-submit="doLogin()" class="auth-form">
       <div class="list">
-        <label class="item item-input">
+        <label class="item item-input" style="border-top:0; border-right:0; border-left:0">
           <span class="input-label">Логин</span>
           <input type="text" class="input-inner" ng-model="loginData.username">
         </label>
-        <label class="item item-input">
+        <label class="item item-input noborder">
           <span class="input-label">Пароль</span>
           <input type="password" class="input-inner" ng-model="loginData.password">
         </label>
-        <label class="item" style="border-bottom:0">
+        <ion-checkbox style="border:0;" ng-model="loginData.isRemembered">Запомнить меня</ion-checkbox>
+        <label class="item" style="border:0; padding:0">
           <button class="button button-block button-positive login-btn" type="submit">Войти</button>
         </label>
       </div>
     </form>
   </ion-content>
-</ion-modal-view>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-view view-title="Финансы">
+<ion-nav-buttons side="right"> <!-- right -->
+   <button ng-click="refresh()" class="button button-icon icon ion-android-refresh"></button>
+ </ion-nav-buttons>
+  <ion-content padding="true">
+  	 <h4 style="text-align:center">Филиал:</h4>
+  	 <div class="selectFil">
+  	 	<select ng-model="filId" ng-change="loadInfo(filId)" ng-options="fil.id as fil.name for fil in fils" ng-init="filId=fils[0]"></select>
+  	 	<div class="list">
+		    <a class="item" ng-repeat="finInfo in finInfo.pplist">
+		      <div class="item-left-side">
+		      	<h2>{{finInfo.ppname}}</h2>
+		      	<p>{{finInfo.username}}</p>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{finInfo.ost}}</p>
+		      	<p>тенге</p>
+		      </div>
+		    </a>
+		    <h5 style="margin-top:15px" ng-if="total"><b>Итого:</b> {{total}} тнг</h5>
+		</div>
+  	 </div>
+  </ion-content>
+</ion-view>

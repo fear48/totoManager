@@ -1,5 +1,8 @@
 angular.module('starter.services', [])
 .factory('totoData', function($http, $q){
+  var headers = {
+    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+  }
 	return {
 		auth: function(user, pass){
 			var def = $q.defer();
@@ -7,7 +10,9 @@ angular.module('starter.services', [])
 				action: 'logonUser',
 				user: user,
 				pass: pass
-			}).success(function(data, status, headers, config){
+			}, {
+         headers: headers
+      }).success(function(data, status, headers, config){
 				def.resolve(data);
 			}).error(function(data, status, headers, config){
 				def.reject(data);
@@ -19,13 +24,30 @@ angular.module('starter.services', [])
 			$http.post('http://app.totobet.info/manager.app', {
 				action: 'getFils',
 				uid: uid
-			}).success(function(data, status, headers, config){
+			}, {
+         headers: headers
+      }).success(function(data, status, headers, config){
 				def.resolve(data);
 			}).error(function(data, status, headers, config){
 				def.reject(data);
 			});
 			return def.promise;
-		}
+		},
+    getFinInfo: function(uid, filId){
+      var def = $q.defer();
+      $http.post('http://app.totobet.info/manager.app', {
+        action: 'getFinInfo',
+        uid: uid,
+        filid: filId
+      }, {
+         headers: headers
+      }).success(function(data, status, headers, config){
+        def.resolve(data);
+      }).error(function(data, status, headers, config){
+        def.reject(data);
+      });
+      return def.promise;
+    }
 	};
 })
 .factory('lstorage', function(){
@@ -38,6 +60,13 @@ return {
    },
    remove: function(key){
      return localStorage.removeItem(key);
+   },
+   isRemembered: function(){
+    if(localStorage.getItem("remembered")){
+      return true;
+    }else{
+      return false;
+    }
    }
  };
 })
