@@ -1,9 +1,111 @@
 <ion-view view-title="Статистика">
-  <ion-content>
-  	<div class="list">
-	  <a class="item" ng-repeat="fil in fils">
-	    {{fil.name}}
-	  </a>
-	</div>
+<ion-nav-buttons side="right">
+   <button ng-click="refresh()" class="button button-icon icon ion-android-refresh"></button>
+ </ion-nav-buttons>
+  <ion-content padding="true">
+  	<h4 style="text-align:center">Филиал:</h4>
+  	 <div class="selectFil">
+  	 	<select ng-model="filId" ng-change="loadInfo(filId)" ng-options="fil.id as fil.name for fil in fils" ng-init="filId = '11'"></select>
+  	 	<button class="button button-positive btn-month icon-left ion-calendar" ng-click="buttonTap()">{{monthTitle}}</button>
+ 
+  	 	<div class="list">
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Поставлено ставок</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.betSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Выиграно по ставкам</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.przSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Пополнения в кассах</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.rkoSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Снятия в кассах</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.pkoSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Пополнения из кладовой</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.fromKladSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Инкассации в кладовую</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.toKladSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Платежные системы</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.paySum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Недостачи</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.toNedoSum - statsInfo.toKladSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Расходы</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.rashSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Прибыль по игре</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{statsInfo.betSum - statsInfo.przSum}}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Процент прибыли</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{ (100 * (statsInfo.betSum - statsInfo.przSum)) / statsInfo.betSum }}</p>
+		      </div>
+		    </a>
+		    <a class="item">
+		      <div class="item-left-side">
+		      	<h2>Чистая прибыль</h2>
+		      </div>
+		      <div class="item-right-side">
+		      	<p>{{ statsInfo.betSum - statsInfo.przSum - statsInfo.rashSum }}</p>
+		      </div>
+		    </a>
+		</div>
+  	 </div>
   </ion-content>
 </ion-view>

@@ -1,9 +1,35 @@
 <ion-view view-title="Отчет по дням">
-  <ion-content>
-  	<div class="list">
-	  <a class="item" ng-repeat="fil in fils">
-	    {{fil.name}}
-	  </a>
-	</div>
+<ion-nav-buttons side="right">
+   <button ng-click="refresh()" class="button button-icon icon ion-android-refresh"></button>
+ </ion-nav-buttons>
+  <ion-content padding="true">
+  	<h4 style="text-align:center">Филиал:</h4>
+  	<div class="selectFil">
+  	 	<select ng-model="filId" ng-change="loadInfo(filId)" ng-options="fil.id as fil.name for fil in fils" ng-init="filId = '11'"></select>
+  	 	<button class="button button-positive btn-month icon-left ion-calendar" ng-click="buttonTap()">{{monthTitle}}</button>
+
+  	 	<div ng-if="days" class="table-report">
+  	 		<div class="row header row-nopad">
+	          <div class="header-col-table">День</div>
+	          <div class="header-col-table">Ставки</div>
+	          <div class="header-col-table">Выигрыш</div>
+	          <div class="header-col-table">Прибыль</div>
+	        </div>
+	        <div class="row row-nopad" ng-repeat="day in days">
+	          <div class="col-table">{{day.day}}</div>
+	          <div class="col-table">{{day.sum1}}</div>
+	          <div class="col-table">{{day.sum2}}</div>
+	          <div class="col-table">{{day.sum3}}</div>
+	        </div>
+	        <div class="row footer row-nopad">
+	          <div class="col-table">Итого: </div>
+	          <div class="col-table">{{totalsum1}}</div>
+	          <div class="col-table">{{totalsum2}}</div>
+	          <div class="col-table">{{totalsum3}}</div>
+	        </div>
+  	 	</div>
+
+
+  	 </div>
   </ion-content>
 </ion-view>

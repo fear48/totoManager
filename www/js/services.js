@@ -47,7 +47,40 @@ angular.module('starter.services', [])
         def.reject(data);
       });
       return def.promise;
+    },
+    getStatsInfo: function(uid, filId, period){
+      var def = $q.defer();
+      $http.post('http://app.totobet.info/manager.app', {
+        action: 'getStatsInfo',
+        uid: uid,
+        filid: filId,
+        period: period
+      }, {
+         headers: headers
+      }).success(function(data, status, headers, config){
+        def.resolve(data);
+      }).error(function(data, status, headers, config){
+        def.reject(data);
+      });
+      return def.promise;
+    },
+    getByDaysInfo: function(uid, filId, period){
+      var def = $q.defer();
+      $http.post('http://app.totobet.info/manager.app', {
+        action: 'getByDaysInfo',
+        uid: uid,
+        filid: filId,
+        period: period
+      }, {
+         headers: headers
+      }).success(function(data, status, headers, config){
+        def.resolve(data);
+      }).error(function(data, status, headers, config){
+        def.reject(data);
+      });
+      return def.promise;
     }
+
 	};
 })
 .factory('lstorage', function(){

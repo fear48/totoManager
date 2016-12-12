@@ -22,8 +22,31 @@ button.login-btn{
 }
 
 .col{
-	border:1px solid #ccc;
 	padding: 15px;
+}
+
+.header .header-col-table {
+	background-color: #6da3ff;
+	color: white;
+}
+
+.footer .col-table{
+	padding: 5px;
+}
+
+.col-table {
+  border: solid 1px #6da3ff;
+  padding: 10px;
+  width: 100%;
+}
+.header-col-table{
+	padding: 10px;
+	width: 100%;
+}
+
+.row-nopad{
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .logo{
@@ -67,4 +90,13 @@ button.login-btn{
 
 .selectFil .list{
 	margin-top: 10px;
+}
+
+button.btn-month{
+	width: 100%;
+	margin-top: 10px;
+	border-radius: 0;
+}
+.table-report{
+	margin-top: 5px;
 }
